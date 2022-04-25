@@ -1,4 +1,5 @@
 # importing the discord package
+from asyncio import queues
 from unicodedata import name
 import discord
 from discord import FFmpegPCMAudio
@@ -9,6 +10,14 @@ from apikeys import *
 
 intents = discord.Intents.default()
 intents.members = True
+
+queues = {}
+
+def check_queue(ctx, id):
+    if queues[id] != []:
+        voice = ctx.guild.voice_client
+        source = queues[id].pop(0)
+        player = voice.play(source)
 
 #client / bot
 client = commands.Bot(command_prefix = '!', intents=intents)
@@ -104,7 +113,32 @@ async def stop(ctx):
 async def play(ctx, arg):
     voice = ctx.guild.voice_client
     source = FFmpegPCMAudio(arg + '.mp3')
-    player = voice.play(source)
+    player = voice.play(source, after=lambda x=None: check_queue(ctx, ctx.message.guild.id))
+
+#queue
+@client.command(pass_content=True)
+async def queue(ctx, arg):
+    voice = ctx.guild.voice_client
+    source = FFmpegPCMAudio(arg + '.mp3')
+    guild_id = ctx.message.guild.id
+    if guild_id in queues:
+        queues[guild_id].append(source)
+    else:
+        queues[guild_id] = [source]
+    await ctx.send('Added to queue')
+
+#clear
+@client.command(pass_content=True)
+async def clear(ctx):
+    queues[ctx.message.guild.id] = []
+    await ctx.send('Queue cleared')
+
+#delete msg if sent
+@client.event
+async def on_message(message):
+    if message.content == 'fuck':
+        await message.delete()
+        await message.channel.send('no cursing kiddo')
 
 
 #run the bot
