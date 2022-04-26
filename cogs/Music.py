@@ -27,7 +27,7 @@ class Music(commands.Cog):
             channel = context.message.author.voice.channel
             # play audio using FFmpegPCMAudio
             voice = await channel.connect()
-            source = FFmpegPCMAudio('cola_test_bot\intro.mp3')
+            source = FFmpegPCMAudio('intro.mp3')
             player = voice.play(source)
         else:
             await context.send("You are not in a voice channel")
@@ -74,7 +74,7 @@ class Music(commands.Cog):
     async def play(self, ctx, arg):
         voice = ctx.guild.voice_client
         source = FFmpegPCMAudio(arg + '.mp3')
-        player = voice.play(source, after=lambda x=None: check_queue(
+        player = voice.play(source, after=lambda x=None: self.check_queue(
             ctx, ctx.message.guild.id))
         await ctx.send("Playing " + '**'  + arg + '**')
 

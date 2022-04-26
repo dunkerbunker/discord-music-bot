@@ -20,7 +20,7 @@ class Admin(commands.Cog):
             await message.channel.send('Restarting...')
             await self.client.close()
         if message.content.startswith('!clear'):
-            await message.channel.purge(limit=1)
+            await message.channel.purge(limit=10)
             await message.channel.send('Cleared')
         if message.content.startswith('!ping'):
             await message.channel.send('Pong!')
