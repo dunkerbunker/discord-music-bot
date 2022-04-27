@@ -24,9 +24,9 @@ class Admin(commands.Cog):
             await message.channel.send('Cleared')
         if message.content.startswith('!ping'):
             await message.channel.send('Pong!')
-        if message.content ==  'fuck':
+        if message.content.startswith('baby lock the door') or message.content.contains('BABY LOCK THE DOOR'):
             await message.delete()
-            await message.channel.send('girl what')
+            await message.channel.send('shush')
 
 def setup(client):
     client.add_cog(Admin(client))

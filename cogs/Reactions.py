@@ -7,9 +7,9 @@ class Reactions(commands.Cog):
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
-        if reaction.emoji == '💩':
-            channel = self.client.get_channel(843827377901142049)
-            await channel.send(f"{user.mention} has been shrunk!")
+        # if reaction.emoji == '💩':
+            channel = reaction.message.channel
+            await channel.send(f"{user.mention} is {reaction.emoji}")
 
 
 def setup(client):
