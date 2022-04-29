@@ -1,8 +1,9 @@
 # importing the nextcord package
 from typing_extensions import Self
 import nextcord
-from nextcord import FFmpegPCMAudio
+from nextcord import Interaction
 from nextcord.ext import commands
+from nextcord import FFmpegPCMAudio
 from nextcord import member
 from asyncio import queues
 from unicodedata import name

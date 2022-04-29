@@ -1,10 +1,13 @@
 import nextcord
+from nextcord import Interaction
 from nextcord.ext import commands
 
 
 class Greetings(commands.Cog):
     def __init__(self, client):
         self.client = client
+
+    testServerId = 843827377901142046
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
