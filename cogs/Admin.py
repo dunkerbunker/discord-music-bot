@@ -1,5 +1,6 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
+
 
 class Admin(commands.Cog):
     def __init__(self, client):
@@ -28,15 +29,15 @@ class Admin(commands.Cog):
             await message.delete()
             await message.channel.send('shush')
 
+
 def setup(client):
     client.add_cog(Admin(client))
-
 
 
 # embed message
 # @client.command(name='stats')
 # async def stats(context):
-#     myembed = discord.Embed(
+#     myembed = nextcord.Embed(
 #         title="ste", description="Useless charecter", color=0x00ff00)
 #     myembed.add_field(name="HP:", value="1", inline=False)
 #     myembed.add_field(name="Height:", value="1cm", inline=False)
@@ -50,7 +51,7 @@ def setup(client):
 # # embed 2
 # @client.command()
 # async def embed(ctx):
-#     theembed = discord.Embed(title="Your profile", url='https://www.youtube.com/', description="about you", color=0x00ff00)
+#     theembed = nextcord.Embed(title="Your profile", url='https://www.youtube.com/', description="about you", color=0x00ff00)
 #     theembed.set_author(name=ctx.author.display_name, url='https://www.youtube.com/', icon_url=ctx.author.avatar_url)
 #     theembed.set_thumbnail(url=ctx.author.avatar_url)
 #     theembed.add_field(name="HP:", value="1", inline=True)

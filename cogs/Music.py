@@ -1,9 +1,9 @@
-# importing the discord package
+# importing the nextcord package
 from typing_extensions import Self
-import discord
-from discord import FFmpegPCMAudio
-from discord.ext import commands
-from discord import member
+import nextcord
+from nextcord import FFmpegPCMAudio
+from nextcord.ext import commands
+from nextcord import member
 from asyncio import queues
 from unicodedata import name
 
@@ -59,8 +59,8 @@ class Music(commands.Cog):
         else:
             await ctx.send("i aint in no voice channel")
 
-
     # stop
+
     @commands.command(pass_content=True, name='stop')
     async def stop(self, ctx):
         if (ctx.voice_client):
@@ -76,7 +76,7 @@ class Music(commands.Cog):
         source = FFmpegPCMAudio(arg + '.mp3')
         player = voice.play(source, after=lambda x=None: self.check_queue(
             ctx, ctx.message.guild.id))
-        await ctx.send("Playing " + '**'  + arg + '**')
+        await ctx.send("Playing " + '**' + arg + '**')
 
     # queue
     @commands.command(pass_content=True)
@@ -87,8 +87,8 @@ class Music(commands.Cog):
         else:
             await ctx.send("i aint in no voice channel")
 
-
     # clear
+
     @commands.command(pass_content=True)
     async def clear(self, ctx):
         queues[ctx.message.guild.id] = []

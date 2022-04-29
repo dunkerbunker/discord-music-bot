@@ -1,11 +1,11 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import os
 
 # getting token
 from apikeys import *
 
-intents = discord.Intents.default()
+intents = nextcord.Intents.default()
 intents.members = True
 
 #client / bot
@@ -14,7 +14,7 @@ client = commands.Bot(command_prefix='!', intents=intents)
 
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.dnd, activity=discord.Streaming(name='single mom in your area', url='https://www.twitch.tv/singlemom'))
+    await client.change_presence(status=nextcord.Status.dnd, activity=nextcord.Streaming(name='single mom in your area', url='https://www.twitch.tv/singlemom'))
     print('Bot is ready.')
     print('---------------------')
     # bot_channel = client.get_channel(843827377901142049)

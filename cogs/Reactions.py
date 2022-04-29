@@ -1,5 +1,6 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
+
 
 class Reactions(commands.Cog):
     def __init__(self, client):
@@ -8,8 +9,8 @@ class Reactions(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
         # if reaction.emoji == '💩':
-            channel = reaction.message.channel
-            await channel.send(f"{user.mention} is {reaction.emoji}")
+        channel = reaction.message.channel
+        await channel.send(f"{user.mention} is {reaction.emoji}")
 
 
 def setup(client):
