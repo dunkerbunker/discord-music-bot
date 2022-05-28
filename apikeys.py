@@ -1,1 +1,1 @@
-BOTTOKEN = 'NzA0MzkzOTM2OTk0NTY2MTg0.Xqcf-Q.v82sshNdilCUaU8vQ75qMzLT4zg'
+BOTTOKEN = 'replace-with-actual-apikey-bestie'
